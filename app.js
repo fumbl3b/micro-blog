@@ -11,7 +11,7 @@ const { formatDistance } = require('date-fns')
 
 const RedisStore = require('connect-redis')(session)
 const app = express()
-const client = redis.createClient()
+const client = redis.createClient(process.env.REDIS_URL)
 
 const ahget = promisify(client.hget).bind(client)
 const asmembers = promisify(client.smembers).bind(client)
